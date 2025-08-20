@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Rumious</title>
+    <meta name="description" content="Rumious Framework" />
+    <meta
+      name="keywords"
+      content="A Frontend framework based on Web Components, enabling you to build modern interfaces without relying on Virtual DOM"
+    />
+    <meta name="author" content="smtdfc team" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+    <link rel="preconnect" href="https://rumious.pages.dev" crossorigin />
+
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap"
+      as="style"
+      onload="this.rel='stylesheet'"
+    />
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap"
+      as="style"
+      onload="this.rel='stylesheet'"
+    />
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap"
+      as="style"
+      onload="this.rel='stylesheet'"
+    />
+
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap"
+      />
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap"
+      />
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap"
+      />
+    </noscript>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown-light.min.css"
+      media="print"
+      onload="this.media='all'"
+    />
+    <link rel="stylesheet" href="./dist/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+    />
+  </head>
+
+  <body>
+    <style>
+      @media (max-width: 768px) {
+        .navbar--hidden {
+          visibility: hidden;
+          opacity: 0;
+          transform: translateX(-150%);
+          pointer-events: none;
+        }
+      }
+
+      body {
+        font-family: 'Rubik', 'Open Sans', Arial, sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+        margin: 0;
+      }
+
+      #app {
+        min-height: 50vh;
+      }
+    </style>
+    <div id="app"></div>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"
+      defer
+    ></script>
+    <script src="./dist/index.min.js" defer></script>
+  </body>
+</html>

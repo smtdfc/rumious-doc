@@ -1,0 +1,35 @@
+{
+  "introduction": {
+    "$title": "Introduction"
+  },
+  "installation": {
+    "$title": "Installation"
+  },
+  "app": {
+    "$title": "App Overview"
+  },
+  "component": {
+    "$title": "Component Guide "
+  },
+  "directives": {
+    "$title": "Directives "
+  },
+  "ref": {
+    "$title": "Element Ref"
+  },
+  "state": {
+    "state_overview": {
+      "$title": "Overview"
+    },
+    "state_array": {
+      "$title": "State with Array"
+    },
+    "$title": "State"
+  },
+  "jsx_syntax": {
+    "$title": "Learn about JSX syntax"
+  },
+  "context": {
+    "$title": "Context"
+  }
+}
