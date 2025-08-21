@@ -4,11 +4,13 @@
   "app": null,
   "jsx_syntax": null,
   "component": null,
-  "directives": null,
   "state": {
     "state_overview": null,
-    "state_array": null
+    "state_array": null,
+    "state_object":null
   },
+  "reactive_system":null,
+  "directives": null,
   "ref": null,
   "context": null
 }

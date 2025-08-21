@@ -75,95 +75,105 @@ app.start();
     ```
 
 
-Methods
- -  isSet(): boolean
-   Checks if the Ref has been successfully attached to a DOM element.
-   if (inputRef.isSet()) {
-  // Perform actions only when the ref is ready
-  inputRef.focus();
-}
+### Methods
+ -  `isSet(): boolean`: Checks if the Ref has been successfully attached to a DOM element.
+    ```typescript
+    if (inputRef.isSet()) {
+      // Perform actions only when the ref is ready
+      inputRef.focus();
+    }
+    ```
 
-Class Operations
- -  addClass(name: string): void
-   Adds a class to the element's class list.
-   myElementRef.addClass('active');
+ -  `addClass(name: string): void`: Adds a class to the element's class list.
+     ```typescript
+     myElementRef.addClass('active');
+    ```
 
- -  removeClass(name: string): void
-   Removes a class from the element's class list.
-   myElementRef.removeClass('hidden');
+ -  `removeClass(name: string): void`: Removes a class from the element's class list.
+    ```typescript
+    myElementRef.removeClass('hidden');
+    ```
 
- -  toggleClass(name: string): void
-   Toggles a class on the element (adds it if it's not there, removes it if it is).
-   myElementRef.toggleClass('is-open');
+ -  `toggleClass(name: string): void`: Toggles a class on the element (adds it if it's not there, removes it if it is).
+    ```typescript
+    myElementRef.toggleClass('is-open');
+    ```
 
-DOM Utilities
- -  addChild(node: Node): void
-   Appends a child node to the element.
-   const newParagraph = document.createElement('p');
-newParagraph.textContent = 'New paragraph';
-containerRef.addChild(newParagraph);
+ -  `addChild(node: Node): void`: Appends a child node to the element.
+    ```
+    const newParagraph = document.createElement('p');
+    newParagraph.textContent = 'New paragraph';
+    containerRef.addChild(newParagraph);
+    ```
 
- -  clear(): void
-   Removes all child nodes and content inside the element.
-   // Clear all content inside the container
-containerRef.clear();
+ -  `clear(): void`: Removes all child nodes and content inside the element.
+    ```typescript
+    // Clear all content inside the container
+    containerRef.clear();
+    ```
 
- -  remove(): void
-   Removes the element from the DOM and clears the internal reference.
-   // Remove the divRef element from the page
-divRef.remove();
-console.log(divRef.isSet()); // Output: false
+ -  `remove(): void`: Removes the element from the DOM and clears the internal reference.
+    ```typescript
+    // Remove the divRef element from the page
+    divRef.remove();
+    console.log(divRef.isSet()); // Output: false
+    ```
 
-Attributes
- -  setAttr(name: string, value: string): void
-   Sets an attribute on the element.
-   myElementRef.setAttr('data-id', '123');
+ -  `setAttr(name: string, value: string): void`: Sets an attribute on the element.
+    ```typescript
+    myElementRef.setAttr('data-id', '123');
+    ```
 
- -  getAttr(name: string): string | null
-   Gets the value of an attribute, or null if the attribute doesn't exist.
-   const id = myElementRef.getAttr('data-id');
-console.log(id); // Output: '123'
+ -  `getAttr(name: string): string | null`: Gets the value of an attribute, or null if the attribute doesn't exist.
+    ```typescript
+    const id = myElementRef.getAttr('data-id');
+    console.log(id); // Output: '123'
+    ```
 
- -  removeAttr(name: string): void
-   Removes an attribute from the element.
-   myElementRef.removeAttr('data-id');
+ -  `removeAttr(name: string): void`: Removes an attribute from the element.
+    ```typescript
+    myElementRef.removeAttr('data-id');
+    ```
 
-Event Listeners
- -  on(event, listener): void
-   Adds an event listener to the element.
-   const handleClick = () => console.log('Click!');
-myButtonRef.on('click', handleClick);
+ -  `on(event, listener): void`: Adds an event listener to the element.
+    ```typescript
+    const handleClick = () => console.log('Click!');
+    myButtonRef.on('click', handleClick);
+    ```
 
- -  off(event, listener): void
-   Removes an event listener.
-   myButtonRef.off('click', handleClick);
+ -  `off(event, listener): void`: Removes an event listener.
+    ```typescript
+    myButtonRef.off('click', handleClick);
+    ```
 
-Focus Control
- -  focus(): void
-   Sets focus on the element (if applicable). This is useful for form elements.
-   inputRef.focus();
+ -  `focus(): void`: Sets focus on the element (if applicable). This is useful for form elements.
+    ```typescript
+    inputRef.focus();
+    ```
 
- -  blur(): void
-   Removes focus from the element.
-   inputRef.blur();
+ -  `blur(): void`: Removes focus from the element.
+    ```typescript
+    inputRef.blur();
+    ```
 
-Visibility
- -  hide(): void
-   Hides the element by setting style.display = 'none'.
-   myElementRef.hide();
+ -  `hide(): void`: Hides the element by setting style.display = 'none'.
+    ```typescript
+    myElementRef.hide();
+    ```
 
- -  show(display = 'block'): void
-   Shows the element by setting the display style. The default value is 'block'.
-   myElementRef.show(); // Sets display: block
-mySpanRef.show('inline'); // Sets display: inline
+ -  `show(display = 'block'): void`: Shows the element by setting the display style. The default value is 'block'.
+    ```typescript
+    myElementRef.show(); // Sets display: block
+    mySpanRef.show('inline'); // Sets display: inline
+    ```
 
-Style Manipulation
- -  setStyle(property: string, value: string): void
-   Sets a CSS property directly on the element.
-   myElementRef.setStyle('color', 'red');
+ -  `setStyle(property: string, value: string): void`: Sets a CSS property directly on the element.
+    ```typescript
+    myElementRef.setstyle('color', 'red');
+    ```
 
- -  getStyle(property: string): string
-   Gets the computed value of a CSS property.
-   const color = myElementRef.getStyle('color');
-console.log(color); // Output: 'red'
-
+ -  `getStyle(property: string): string`: Gets the computed value of a CSS property.
+    ```typescript
+    const color = myElementRef.getStyle('color');
+    console.log(color); // Output: 'red'
+    ```

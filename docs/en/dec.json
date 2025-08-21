@@ -24,7 +24,13 @@
     "state_array": {
       "$title": "State with Array"
     },
+    "state_object": {
+      "$title": "State with Object"
+    },
     "$title": "State"
+  },
+  "reactive_system":{
+    "$title": "Reactive System"
   },
   "jsx_syntax": {
     "$title": "Learn about JSX syntax"

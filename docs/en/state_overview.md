@@ -2,64 +2,83 @@
 
 In Rumious, a **State** is a special object that represents dynamic data and can change over the lifecycle of an application. It allows reactivity across the UI by notifying relevant parts when data changes.
 
----
 
-## Creating a State
-
+### Creating and Accessing State
+You create a state object using the `createState` function, specifying the data type and an initial value.
 ```typescript
 import { createState } from '@rumious/core';
 
-let state = createState<string>('hello');
+// Create a state for a string
+const greeting = createState<string>('Hello, Rumious!');
+
+// Create a state for a number
+const counter = createState<number>(0);
+
+// Create a state for an object
+const user = createState<{ name: string; age: number }>({
+  name: 'John Doe',
+  age: 30,
+});
 ```
 
----
+To get the current value of a state, you use the `.get()` method.
+```typescript
+const currentValue = greeting.get();
+console.log(currentValue); // "Hello, Rumious!"
+```
 
-## Modifying State
+### Modifying State
+The way you modify state determines whether or not it triggers reactivity.
 
-- **Set a value:**
+#### `set()`
+This is the most common method for changing a state's value. It sets a new value and immediately notifies all listeners, causing the UI to update.
+```typescript
+// Initial state
+const status = createState<string>('idle');
 
-  ```typescript
-  state.set('new value');
-  ```
+// Change the state
+status.set('loading');
+// The UI will now show 'loading' wherever the `status` state is used.
+```
 
-  Sets a new value and triggers reactivity.
+#### `update()`
+Use this method when you want to calculate the new state value based on the current one. The update() method accepts a callback function that receives the current value and should return the new value.
+```typescript
+const count = createState<number>(0);
 
-- **Get current value:**
+// Increase the count by one
+count.update((currentValue) => currentValue + 1);
 
-  ```typescript
-  const value = state.get();
-  ```
+// The count is now 1. Let's update it again.
+count.update((currentValue) => currentValue * 2);
+// The count is now 2.
+```
 
-- **Update with calculation:**
+#### `setInSlient()`
+This method changes the state's value without triggering any reactivity. Use it when you need to update the data internally without causing a UI render.
+```typescript
+const serverMessage = createState<string>('Initial message');
 
-  ```typescript
-  state.update((val) => val + ' world');
-  ```
+// The UI will NOT update, but the value is changed
+serverMessage.setInSlient('A silent update from the server.');
 
-  Useful when you want to derive a new value from the current state.
+console.log(serverMessage.get()); // "A silent update from the server."
+```
 
-- **Set silently (no reactivity):**
+#### `forceReactive()`
+This method manually triggers all listeners and observers, even if the state's value has not changed. This is useful in advanced scenarios where you need to force a re-render or side effect without a value change.
+```typescript
+const myState = createState<object>({ data: 'old' });
 
-  ```typescript
-  state.setInSlient('muted value');
-  ```
+// We changed the object's property directly, which doesn't trigger reactivity by default
+myState.get().data = 'new';
 
-  Use when you want to change the state without triggering listeners or UI updates.
+// Manually force an update
+myState.forceReactive();
+```
 
-- **Force reactivity manually:**
-
-  ```typescript
-  state.forceReactive();
-  ```
-
-  Manually triggers any observers/listeners, even if the value hasn't changed.
-
----
-
-## Using State in JSX
-
-When used inside JSX, the state will automatically trigger DOM updates when its value changes:
-
+### Using State in JSX
+When you embed a state object directly into your JSX, Rumious automatically creates a reactive connection. Any changes to the state's value will automatically update the corresponding part of the DOM.
 ```typescript
 import {
   Fragment,
@@ -75,26 +94,35 @@ const count = createState<number>(0);
 
 app.setRootLayout(
   <Fragment>
-    <span>{count}</span>
-    <button on:click={() => count.update(v => v + 1)}>Increase</button>
+    <h1>The current count is: <span>{count}</span></h1>
+    <button on:click={() => count.update(v => v + 1)}>
+      Increase Count
+    </button>
   </Fragment>
 );
 
 app.start();
 ```
 
----
+In this example, when you click the "Increase Count" button, count.update() changes the state's value. Rumious detects this change and updates only the `<span>` element, making the process highly efficient.
 
-## Watching a State
-
-You can manually register listeners to react to state changes using `watch`:
-
+### Watching a State
+If you need to perform actions that are not related to the UI—known as side effects—you can use the watch function. This allows you to run a callback function whenever a state's value changes.
 ```typescript
-import { watch } from '@rumious/core';
+import { watch, createState } from '@rumious/core';
 
-watch(count, (newVal) => {
-  console.log('New count:', newVal);
+const username = createState<string>('guest');
+
+// Log the new value whenever username changes
+watch(username, (newUsername) => {
+  console.log(`Username changed to: ${newUsername}`);
 });
+
+// This will trigger the watch callback
+username.set('Alice');
+
+// This will also trigger the watch callback
+username.set('Bob');
 ```
 
-This is useful when you want to perform side effects when the state updates.
+This is useful for tasks such as logging, saving data to local storage, or fetching data from an API based on a state change.
