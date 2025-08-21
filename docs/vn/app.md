@@ -1,5 +1,3 @@
-
-
 ## Rumious App Overview
 
 The `App` is the base class of a Rumious application. This class manages modules, states, and the rendering lifecycle.

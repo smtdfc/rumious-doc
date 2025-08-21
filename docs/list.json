@@ -7,9 +7,9 @@
   "state": {
     "state_overview": null,
     "state_array": null,
-    "state_object":null
+    "state_object": null
   },
-  "reactive_system":null,
+  "reactive_system": null,
   "directives": null,
   "ref": null,
   "context": null

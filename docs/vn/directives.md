@@ -1,5 +1,3 @@
-
-
 # Directive System in Rumious
 
 Rumious supports a powerful directive system that enables fine-grained, declarative behavior in JSX. Directives are attributes prefixed with special keywords (e.g., `on:`, `bind:`, `model:`) and are compiled at build time by the Rumious template compiler.

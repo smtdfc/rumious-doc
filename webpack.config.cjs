@@ -6,12 +6,12 @@ const isProduction = process.env.NODE_ENV === 'production';
 module.exports = {
   entry: './src/index.tsx',
   externals: [
-    function({ request }, callback) {
+    function ({ request }, callback) {
       if (request === '/playground/compiler.js') {
         return callback(null, `import('${request}')`);
       }
       callback();
-    }
+    },
   ],
   output: {
     filename: 'index.min.js',
@@ -37,82 +37,87 @@ module.exports = {
   },
   module: {
     rules: [
-    {
-      test: /.(ts|tsx)$/,
-      exclude: /node_modules/,
-      use: [
       {
-        loader: path.resolve(
-          __dirname,
-          './node_modules/@rumious/webpack-loader/dist/index.js',
-        ),
-        options: {
-          configFile: './rumious.config.json',
-        },
-      },
-      {
-        loader: 'ts-loader',
-        options: {
-          transpileOnly: true,
-        },
-      }, ],
-    },
-    {
-      test: /\.jsx$/,
-      exclude: /node_modules/,
-      use: [
-      {
-        loader: path.resolve(
-          __dirname,
-          './node_modules/@rumious/webpack-loader/dist/index.js',
-        ),
-      }, ],
-    },
-    {
-      test: /\.(png|svg|jpg|jpeg|gif|webp)$/i,
-      type: 'asset/resource',
-      generator: {
-        filename: '../assets/[name][hash][ext][query]',
-      },
-    },
-    {
-      test: /\.module\.css$/i,
-      use: [
-      {
-        loader: MiniCssExtractPlugin.loader,
-        options: {
-          esModule: true,
-        },
-      },
-      {
-        loader: 'css-loader',
-        options: {
-          esModule: true,
-          modules: {
-            exportLocalsConvention: 'camelCase',
-            namedExport: false,
+        test: /.(ts|tsx)$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: path.resolve(
+              __dirname,
+              './node_modules/@rumious/webpack-loader/dist/index.js',
+            ),
+            options: {
+              configFile: './rumious.config.json',
+            },
           },
-          importLoaders: 1,
-        },
-      }, ],
-    },
-    {
-      test: /\.css$/i,
-      exclude: /\.module\.css$/i,
-      use: [
+          {
+            loader: 'ts-loader',
+            options: {
+              transpileOnly: true,
+            },
+          },
+        ],
+      },
       {
-        loader: MiniCssExtractPlugin.loader,
-        options: {
-          esModule: true,
+        test: /\.jsx$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: path.resolve(
+              __dirname,
+              './node_modules/@rumious/webpack-loader/dist/index.js',
+            ),
+          },
+        ],
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif|webp)$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: '../assets/[name][hash][ext][query]',
         },
       },
       {
-        loader: 'css-loader',
-        options: {
-          esModule: true,
-        },
-      }, ],
-    }, ],
+        test: /\.module\.css$/i,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              esModule: true,
+            },
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              esModule: true,
+              modules: {
+                exportLocalsConvention: 'camelCase',
+                namedExport: false,
+              },
+              importLoaders: 1,
+            },
+          },
+        ],
+      },
+      {
+        test: /\.css$/i,
+        exclude: /\.module\.css$/i,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              esModule: true,
+            },
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              esModule: true,
+            },
+          },
+        ],
+      },
+    ],
   },
   plugins: [
     new MiniCssExtractPlugin({

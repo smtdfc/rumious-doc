@@ -13,8 +13,10 @@ export default class Footer extends Component<{}> {
           </p>
           <br />
           <p>
-            <a href="https://github.com/smtdfc/rumious" target="_blank">GitHub</a>|
-            <a href="#/documentation/introduction">Docs</a> |
+            <a href="https://github.com/smtdfc/rumious" target="_blank">
+              GitHub
+            </a>
+            |<a href="#/documentation/introduction">Docs</a> |
             <a href="#/playground">Playground</a> |
           </p>
         </div>

@@ -1,5 +1,3 @@
-
-
 # JSX Syntax Guide
 
 JSX (JavaScript XML) is a syntax extension for JavaScript. It allows you to write HTML-like code directly within your JavaScript logic.

@@ -1,5 +1,3 @@
-
-
 # Component Overview in Rumious
 
 In Rumious, a **Component** is a powerful unit used to encapsulate and reuse UI logic. It helps organize the interface into isolated, testable, and maintainable pieces.

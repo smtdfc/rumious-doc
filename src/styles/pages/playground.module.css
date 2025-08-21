@@ -7,7 +7,6 @@
   position: relative;
 }
 
-
 .load-overlay {
   position: fixed;
   top: 0;
@@ -36,7 +35,7 @@ h1 {
   justify-content: center;
 }
 
-.code-edit-container>span {
+.code-edit-container > span {
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -78,13 +77,12 @@ textarea:focus {
   box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
 }
 
-@media(max-width:768px) {
+@media (max-width: 768px) {
   .code-edit-container {
     flex-flow: column;
-    row-gap:20px;
+    row-gap: 20px;
   }
 }
-
 
 @media (min-width: 768px) {
   textarea {

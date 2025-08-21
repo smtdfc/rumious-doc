@@ -1,5 +1,3 @@
-
-
 # ⚡ Rumious
 
 ![npm](https://img.shields.io/npm/v/@rumious/core)  
