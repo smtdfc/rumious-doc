@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "build": "mkdir -p ./public/docs && cp -pr ./docs/* ./public/docs/ && rumious prod"
+    "build": "mkdir -p ./public/{docs,playground} && cp -pr ./docs/* ./public/docs/ && cp -pr ./playground/* ./public/playground/ && rumious prod"
   },
   "dependencies": {
     "@rumious/browser": "^0.0.2",
