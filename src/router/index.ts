@@ -33,5 +33,6 @@ export default function (app: App): RouterModule {
     },
   ]);
 
+  app.router = router;
   return router;
 }

@@ -50,7 +50,7 @@ export default class Navbar extends Component<{}> {
             </ul>
           </div>
           <div class="navbar-items">
-            <button class="btn" href="https://github.com/smtdfc/rumious">
+            <button onclick="window.location.href='#/playground';" class="btn" href="https://github.com/smtdfc/rumious">
               Try now
             </button>
           </div>
